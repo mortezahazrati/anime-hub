@@ -6,6 +6,8 @@ import { Box, Button, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 
 import { useSearchParams } from "next/navigation";
 import ItemCard from "./ItemCard";
+import { Anime } from "@/utils/types";
+import ItemCardContainer from "./ItemCardContainer";
 
 const ItemsList = () => {
   const currentPage = parseInt(useSearchParams().get("page") || "1");
@@ -64,24 +66,11 @@ const ItemsList = () => {
             paddingTop={{ base: 4, lg: 8 }}
             spacing={{ base: 4, lg: 8 }}
           >
-            {data.Page.media.map(
-              (anime: {
-                id: number;
-                title: { english: string };
-                status: string;
-                coverImage: {
-                  large: string;
-                };
-                description: string;
-                averageScore: number;
-                episodes: number;
-                season: string;
-              }) => (
-                <Box key={anime.id}>
-                  <ItemCard anime={anime} />
-                </Box>
-              )
-            )}
+            {data.Page.media.map((anime) => (
+              <ItemCardContainer key={anime.id}>
+                <ItemCard anime={anime} />
+              </ItemCardContainer>
+            ))}
           </SimpleGrid>
         )}
       </Flex>
@@ -102,18 +91,7 @@ const GET_MANGAS = gql`
 
 interface AnimesData {
   Page: {
-    media: {
-      id: number;
-      title: { english: string };
-      status: string;
-      coverImage: {
-        large: string;
-      };
-      description: string;
-      averageScore: number;
-      episodes: number;
-      season: string;
-    }[];
+    media: Anime[];
     pageInfo: { hasNextPage: boolean; currentPage: number };
   };
 }

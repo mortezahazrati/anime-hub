@@ -10,23 +10,9 @@ import {
 import Image from "next/image";
 import { gql } from "@apollo/client";
 import { ItemModal } from "./ItemModal";
+import { Anime } from "@/utils/types";
 
-const ItemCard = ({
-  anime,
-}: {
-  anime: {
-    id: number;
-    title: { english: string };
-    status: string;
-    coverImage: {
-      large: string;
-    };
-    description: string;
-    averageScore: number;
-    episodes: number;
-    season: string;
-  };
-}) => {
+const ItemCard = ({ anime }: { anime: Anime }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
