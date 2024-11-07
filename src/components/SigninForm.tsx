@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import { SubmitButton } from "./SubmitButton";
 import { checkUser } from "@/app/signin/actions";
 
-export const SigninForm = () => {
+export const SigninForm = ({
+  userInfoFromCookie,
+}: {
+  userInfoFromCookie?: { username: string; jobTitle: string };
+}) => {
   const router = useRouter();
 
   const [error, dispatch] = useFormState(checkUser, undefined);
@@ -26,15 +30,24 @@ export const SigninForm = () => {
       >
         <FormControl as="fieldset" isRequired>
           <FormLabel as="legend">Enter your username:</FormLabel>
-          <Input autoFocus name="username" placeholder="User name" />
+          <Input
+            autoFocus
+            name="username"
+            placeholder="User name"
+            defaultValue={userInfoFromCookie?.username}
+          />
         </FormControl>
         <FormControl as="fieldset" isRequired>
           <FormLabel as="legend">Enter your job title:</FormLabel>
 
-          <Input name="jobTitle" placeholder="Job title" />
+          <Input
+            name="jobTitle"
+            placeholder="Job title"
+            defaultValue={userInfoFromCookie?.jobTitle}
+          />
         </FormControl>
 
-        <SubmitButton label="Submit" />
+        <SubmitButton label={userInfoFromCookie ? "Update" : "Submit"} />
       </VStack>
     </form>
   );
