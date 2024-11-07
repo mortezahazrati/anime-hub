@@ -30,7 +30,8 @@ const ItemsList = () => {
         paddingBottom={{ base: 4, lg: 8 }}
         position="fixed"
         zIndex="overlay"
-        top="20"
+        top={20}
+        left={3}
       >
         <Button
           as={Link}

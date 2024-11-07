@@ -7,6 +7,8 @@ import { Inter } from "next/font/google";
 
 import { ProviderChakra } from "@/providers/ProviderChakra";
 import { ProviderApollo } from "@/providers/ProviderApollo";
+import { Box } from "@chakra-ui/react";
+import NavBar from "@/components/NavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +27,16 @@ export default function RootLayout({
       <body className={inter.className}>
         <ProviderApollo>
           <ProviderChakra>
+            <Box
+              position="fixed"
+              top="0"
+              left="0"
+              right="0"
+              zIndex="overlay"
+              bg="gray.200"
+            >
+              <NavBar />
+            </Box>
             <main className={styles.main}>{children}</main>
           </ProviderChakra>
         </ProviderApollo>
