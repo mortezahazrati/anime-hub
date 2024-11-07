@@ -1,6 +1,15 @@
-import { Card, CardBody, Stack, Heading, Text, Tag } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  Stack,
+  Heading,
+  Text,
+  Tag,
+  useDisclosure,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { gql } from "@apollo/client";
+import { ItemModal } from "./ItemModal";
 
 const ItemCard = ({
   anime,
@@ -18,9 +27,11 @@ const ItemCard = ({
     season: string;
   };
 }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
-      <Card maxW="sm">
+      <Card maxW="sm" onClick={onOpen}>
         <CardBody>
           <Image
             alt={anime.title.english}
@@ -59,6 +70,7 @@ const ItemCard = ({
           </Stack>
         </CardBody>
       </Card>
+      {isOpen && <ItemModal isOpen={isOpen} onClose={onClose} id={anime.id} />}
     </>
   );
 };
