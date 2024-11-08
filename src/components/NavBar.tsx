@@ -9,7 +9,12 @@ const NavBar = () => {
     <Box padding="10px" display="flex" justifyContent="space-between">
       <Box>
         <Link href="/">
-          <Image src="/next.svg" width={48} height={48} alt="leonardo-icon" />
+          <Image
+            src="/leonardo.svg"
+            width={48}
+            height={48}
+            alt="leonardo-icon"
+          />
         </Link>
       </Box>
       <UserProfile />
