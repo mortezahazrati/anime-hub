@@ -10,7 +10,7 @@ const NavBar = () => {
       <Box>
         <Link href="/">
           <Image
-            src="/leonardo.svg"
+            src="/images/leonardo.svg"
             width={48}
             height={48}
             alt="leonardo-icon"
