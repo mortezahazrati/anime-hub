@@ -19,7 +19,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { ReactNode } from "react";
 
 export const ItemModal = ({
   isOpen,
@@ -30,13 +29,15 @@ export const ItemModal = ({
   isOpen: boolean;
   onClose: () => void;
 }) => {
+  // 1- Supplying AnimeData for more type safety, and better code intelligence
+  // 2- I could provide this anime details from the parent component, however, this is the best way of doing this.
+  // Because the data formats are different and the parent will have to fetch unnecessary data.
   const { data, error } = useQuery<AnimeData>(GET_MANGA, {
     variables: { id },
   });
 
-  let modalContent: ReactNode = null;
-
-  if (error) modalContent = <Text color="red">An error has occurred.</Text>;
+  // TODO: improve error handling
+  if (error) return <Text color="red">An error has occurred.</Text>;
 
   return (
     <Modal onClose={onClose} size="full" isOpen={isOpen}>
@@ -108,6 +109,7 @@ export const ItemModal = ({
   );
 };
 
+// Keeping the query document in the same file where it is used as a best practice for better maintainability and scalability
 const GET_MANGA = gql`
   query media($id: Int!) {
     Media(id: $id) {

@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Thanks for this cool challenge. Really enjoyed doing it.
+
+The description and instructions were clear and very informative.
+
+The project has been deployed into vercel and is accessible in this url:
+https://my-leonardo.vercel.app/
 
 ## Getting Started
 
@@ -29,8 +34,12 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Notes and Improvements:
+- Chakra doesn't have code sand boxes for its demos and components, which is something that for example Material UI offers, this makes it harder to customze the components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- The returned type of a query has to be hardcoded manually, would be nicer to use type generators like `graphqlCodegen`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Adding a `Log out` functionality
+- Improving the pagination to navigate through a series of pages
+- Improve the loading states, like using skeleton
+- Add toast notifications

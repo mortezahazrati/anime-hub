@@ -80,6 +80,7 @@ const ItemsList = () => {
 
 export default ItemsList;
 
+// Keeping the query document in the same file where it is used as a best practice for better maintainability and scalability
 const GET_MANGAS = gql`
   query animes($page: Int!) {
     Page(page: $page, perPage: 10) {

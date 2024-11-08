@@ -63,6 +63,7 @@ const ItemCard = ({ anime }: { anime: Anime }) => {
 
 export default ItemCard;
 
+// Keeping the fragment in the same file where its fields are used as a best practice for better maintainability and scalability
 ItemCard.fragment = gql`
   fragment ItemCard_page on Page {
     pageInfo {

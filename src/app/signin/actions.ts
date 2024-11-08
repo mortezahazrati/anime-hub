@@ -7,6 +7,8 @@ export async function checkUser(_state: unknown, formData: FormData) {
   const jobTitle = formData.get("jobTitle");
 
   try {
+    // Although VSCode says this 'await' is unnecessary, this is the recommended way by next official documentation
+    // See: https://nextjs.org/docs/app/api-reference/functions/cookies
     (await cookies()).set(
       "user-information",
       JSON.stringify({

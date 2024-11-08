@@ -17,6 +17,7 @@ export const SigninForm = ({
   const [error, dispatch] = useFormState(checkUser, undefined);
 
   if (error === false) {
+    // Pushing the user into homepage when the user signs in
     router.push("/");
     return null;
   }
