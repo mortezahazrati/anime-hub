@@ -6,51 +6,44 @@ import {
   Text,
   Tag,
   useDisclosure,
+  AspectRatio,
+  Image,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import { gql } from "@apollo/client";
 import { ItemModal } from "./ItemModal";
 import { Anime } from "@/utils/types";
+import ItemCardTag from "./ItemCardTag";
 
 const ItemCard = ({ anime }: { anime: Anime }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Card maxW="sm" onClick={onOpen}>
+      <Card onClick={onOpen}>
         <CardBody>
-          <Image
-            alt={anime.title.english}
-            loading="lazy"
-            width={230}
-            height={320}
-            src={anime.coverImage.large}
-          />
-          <Tag
-            color="purple.900"
-            colorScheme="purple"
-            fontSize="xs"
-            position="absolute"
-            right={4}
-            rounded={2}
-            top={2}
-          >
-            {anime.averageScore}%
-          </Tag>
-          <Tag
-            color="green.900"
+          <AspectRatio maxW="400px" ratio={3 / 4}>
+            <Image
+              src={anime.coverImage.large}
+              alt={
+                "This is an image of an anime with a title of " +
+                anime.title.english
+              }
+              objectFit="cover"
+              width="inherit"
+            />
+          </AspectRatio>
+          <ItemCardTag colorScheme="purple" right={4} tagLabel={anime.season} />
+          <ItemCardTag
             colorScheme="green"
-            fontSize="xs"
-            position="absolute"
             left={4}
-            rounded={2}
-            top={2}
-          >
-            {anime.season}
-          </Tag>
+            tagLabel={anime.averageScore + "%"}
+          />
+
           <Stack mt="6" spacing="3">
-            <Heading size="md">{anime?.title.english}</Heading>
-            <Text color="blue.600" fontSize="2xl">
+            <Heading size={{ base: "xs", sm: "md" }}>
+              {anime?.title.english}
+            </Heading>
+            <Text color="blue.600" fontSize={{ base: "md", sm: "2xl" }}>
               {anime.episodes} Episodes
             </Text>
           </Stack>

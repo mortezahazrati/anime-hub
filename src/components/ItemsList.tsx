@@ -26,29 +26,40 @@ const ItemsList = () => {
     >
       <Flex
         as="aside"
+        flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
         gap={{ base: 2, lg: 4 }}
         paddingBottom={{ base: 4, lg: 8 }}
         position="fixed"
-        zIndex="overlay"
+        zIndex="sticky"
         top={20}
         left={3}
+        width="100%"
       >
-        <Button
-          as={Link}
-          href={`/?page=${currentPage - 1}`}
-          isDisabled={loading || currentPage <= 1}
-        >
-          Previous
-        </Button>
-        <Button
-          as={Link}
-          href={`/?page=${currentPage + 1}`}
-          disabled={loading || !data?.Page.pageInfo.hasNextPage}
-        >
-          Next
-        </Button>
+        <Box>
+          <Button
+            size={{ base: "xs", sm: "md" }}
+            as={Link}
+            href={`/?page=${currentPage - 1}`}
+            isDisabled={loading || currentPage <= 1}
+            marginRight={2}
+          >
+            Previous
+          </Button>
+          <Button
+            size={{ base: "xs", sm: "md" }}
+            as={Link}
+            href={`/?page=${currentPage + 1}`}
+            disabled={loading || !data?.Page.pageInfo.hasNextPage}
+          >
+            Next
+          </Button>
+        </Box>
+
+        {loading && (
+          <Spinner marginRight={10} size={{ base: "xs", sm: "sm" }} />
+        )}
       </Flex>
       <Flex
         flexDirection="column"
@@ -56,7 +67,6 @@ const ItemsList = () => {
         position="relative"
         alignItems="center"
       >
-        {loading && <Spinner size="sm" />}
         {data && (
           <SimpleGrid
             as="ul"
@@ -64,7 +74,6 @@ const ItemsList = () => {
             columns={{ base: 2, md: 3, lg: 5 }}
             paddingX={{ base: 4, lg: 8 }}
             paddingTop={{ base: 4, lg: 8 }}
-            spacing={{ base: 4, lg: 8 }}
           >
             {data.Page.media.map((anime) => (
               <ItemCardContainer key={anime.id}>

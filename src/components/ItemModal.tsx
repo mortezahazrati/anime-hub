@@ -50,46 +50,57 @@ export const ItemModal = ({
             <ModalHeader>{data.Media.title.english}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Card flexDirection="row" overflow="hidden" marginBottom={4}>
-                <Image
-                  objectFit="cover"
-                  src={data.Media.coverImage.large}
-                  alt="Caffe Latte"
-                  width={230}
-                  height={320}
-                />
-
-                <Box marginLeft={10}>
-                  <CardBody>
-                    <Text fontWeight="bold">Characters:</Text>
-
-                    {data.Media.characters.nodes.map(
-                      (character: {
-                        name: { first: string };
-                        image: { medium: string };
-                      }) => (
-                        <Avatar
-                          key={character.name.first}
-                          name={character.name.first}
-                          src={character.image.medium}
-                          size="2xl"
-                          marginRight={2}
-                        />
-                      )
-                    )}
-
-                    <HStack my="4">
+              <Card maxW="full" marginBottom={4}>
+                <CardBody display="flex" flexWrap="wrap" gap={10}>
+                  <Image
+                    objectFit="cover"
+                    src={data.Media.coverImage.large}
+                    alt="Caffe Latte"
+                    width={230}
+                    height={320}
+                  />
+                  <Box
+                    flexDirection="column"
+                    display="flex"
+                    flexWrap="wrap"
+                    justifyContent="space-between"
+                  >
+                    <Box>
+                      <Text marginBottom={{ base: 1, lg: 4 }} fontWeight="bold">
+                        Characters:
+                      </Text>
+                      <Box display="flex" flexWrap="wrap">
+                        {data.Media.characters.nodes.map(
+                          (character: {
+                            name: { first: string };
+                            image: { medium: string };
+                          }) => (
+                            <Avatar
+                              key={character.name.first}
+                              name={character.name.first}
+                              src={character.image.medium}
+                              size={{ base: "md", lg: "xl" }}
+                              marginRight={2}
+                              marginBottom={2}
+                            />
+                          )
+                        )}
+                      </Box>
+                    </Box>
+                    <Box display="flex" flexWrap="wrap" gap={1}>
                       {data.Media.genres.map((genre: string) => (
                         <Badge key={genre}>{genre}</Badge>
                       ))}
-                    </HStack>
-                  </CardBody>
-                  <CardFooter>
-                    <a target="blank" href={data.Media.siteUrl}>
-                      <Button>Visit Website</Button>
-                    </a>
-                  </CardFooter>
-                </Box>
+                    </Box>
+                  </Box>
+                </CardBody>
+                <CardFooter>
+                  <a target="blank" href={data.Media.siteUrl}>
+                    <Button size={{ base: "xs", sm: "md" }}>
+                      Visit Website
+                    </Button>
+                  </a>
+                </CardFooter>
               </Card>
 
               <Text

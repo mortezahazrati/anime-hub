@@ -18,19 +18,24 @@ const UserProfile = () => {
   return (
     <Menu>
       <MenuButton as="button">
-        <Flex width={170} gap={4}>
-          <Avatar />
+        <Flex width={170} gap={4} justifyContent="center" alignItems="center">
+          <Avatar size={{ base: "sm", sm: "md" }} />
           <Box>
-            <Text fontWeight="bold">{userInfoFromCookie.username}</Text>
-            <Text>{userInfoFromCookie.jobTitle}</Text>
+            <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
+              {userInfoFromCookie.username}
+            </Text>
+            <Text fontSize={{ base: "sm", sm: "md" }}>
+              {userInfoFromCookie.jobTitle}
+            </Text>
           </Box>
         </Flex>
       </MenuButton>
 
-      <MenuList>
-        <Link href="/user">
-          <MenuItem>Update Profile</MenuItem>
-        </Link>
+      <MenuList zIndex="100">
+        <MenuItem>
+          <Link href="/user">Update Profile</Link>
+        </MenuItem>
+
         {/* TODO: Add logging out functionality */}
         <MenuItem>Logout</MenuItem>
       </MenuList>
