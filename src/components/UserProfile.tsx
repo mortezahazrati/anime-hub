@@ -13,6 +13,11 @@ import { cookies } from "next/headers";
 
 const UserProfile = () => {
   const userInCookie = cookies().get("user-information")?.value;
+
+  // Immediately returning null, if no user is already signed in.
+  // So, no profile menu will be shown in NavBar if the user is not signed in
+  if (!userInCookie) return null;
+
   const userInfoFromCookie: { username: string; jobTitle: string } =
     userInCookie ? JSON.parse(userInCookie) : { username: "", jobTitle: "" };
   return (
