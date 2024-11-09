@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { cookies } from "next/headers";
+import SingOutMenuItem from "./SingOutMenuItem";
 
 const UserProfile = () => {
   const userInCookie = cookies().get("user-information")?.value;
@@ -40,9 +41,7 @@ const UserProfile = () => {
         <MenuItem>
           <Link href="/user">Update Profile</Link>
         </MenuItem>
-
-        {/* TODO: Add logging out functionality */}
-        <MenuItem>Logout</MenuItem>
+        <SingOutMenuItem />
       </MenuList>
     </Menu>
   );

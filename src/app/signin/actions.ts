@@ -22,3 +22,7 @@ export async function checkUser(_state: unknown, formData: FormData) {
     return error.message as string;
   }
 }
+
+export async function signOut() {
+  (await cookies()).delete("user-information");
+}
