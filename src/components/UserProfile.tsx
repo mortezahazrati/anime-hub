@@ -23,7 +23,7 @@ const UserProfile = () => {
   return (
     <Menu>
       <MenuButton as="button">
-        <Flex width={170} gap={4} justifyContent="center" alignItems="center">
+        <Flex gap={4} justifyContent="center" alignItems="center">
           <Avatar size={{ base: "sm", sm: "md" }} />
           <Box>
             <Text fontSize={{ base: "sm", sm: "md" }} fontWeight="bold">
@@ -36,7 +36,7 @@ const UserProfile = () => {
         </Flex>
       </MenuButton>
 
-      <MenuList zIndex="100">
+      <MenuList>
         <MenuItem>
           <Link href="/user">Update Profile</Link>
         </MenuItem>
