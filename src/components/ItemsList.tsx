@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
-import { Box, Button, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Button, Flex, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 
 import { useSearchParams } from "next/navigation";
 import ItemCard from "./ItemCard";
@@ -12,9 +12,17 @@ import ItemCardContainer from "./ItemCardContainer";
 const ItemsList = () => {
   const currentPage = parseInt(useSearchParams().get("page") || "1");
 
-  const { loading, data } = useQuery<AnimesData>(GET_MANGAS, {
+  const { loading, data, error } = useQuery<AnimesData>(GET_MANGAS, {
     variables: { page: currentPage },
   });
+
+  if (error)
+    return (
+      <Text color="red">
+        The following error has occurred. {error.message}. Please try again
+        later
+      </Text>
+    );
 
   return (
     <Flex

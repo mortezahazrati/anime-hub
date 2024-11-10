@@ -37,7 +37,13 @@ export const ItemModal = ({
   });
 
   // TODO: improve error handling
-  if (error) return <Text color="red">An error has occurred.</Text>;
+  if (error)
+    return (
+      <Text color="red">
+        The following error has occurred. {error.message}. Please try again
+        later
+      </Text>
+    );
 
   return (
     <Modal onClose={onClose} size="full" isOpen={isOpen}>
