@@ -7,11 +7,13 @@ https://my-leonardo.vercel.app/
 
 Web Demo:
 
-![](web.mp4)
+https://github.com/user-attachments/assets/bfd424d2-f19f-4840-b80e-fa55b8153559
 
 Mobile Size Demo:
 
-![](mobile.mp4)
+https://github.com/user-attachments/assets/505296e5-9f2b-463d-845c-47677c2ada5d
+
+
 ## Getting Started
 
 First, run the development server:
