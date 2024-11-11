@@ -5,6 +5,13 @@ The description and instructions were clear and very informative.
 The project has been deployed into vercel and is accessible in this url:
 https://my-leonardo.vercel.app/
 
+Web Demo:
+
+![](web.mp4)
+
+Mobile Size Demo:
+
+![](mobile.mp4)
 ## Getting Started
 
 First, run the development server:
