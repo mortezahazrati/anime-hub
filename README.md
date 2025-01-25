@@ -1,7 +1,3 @@
-Thanks for this cool challenge. Really enjoyed doing it.
-
-The description and instructions were clear and very informative.
-
 The project has been deployed into vercel and is accessible in this url:
 https://my-leonardo.vercel.app/
 
