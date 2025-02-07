@@ -35,7 +35,7 @@ export const SigninForm = ({
             autoFocus
             name="username"
             placeholder="User name"
-            defaultValue={userInfoFromCookie?.username}
+            defaultValue={userInfoFromCookie ? userInfoFromCookie.username : "Test"}
           />
         </FormControl>
         <FormControl as="fieldset" isRequired>
@@ -44,7 +44,7 @@ export const SigninForm = ({
           <Input
             name="jobTitle"
             placeholder="Job title"
-            defaultValue={userInfoFromCookie?.jobTitle}
+            defaultValue={userInfoFromCookie ? userInfoFromCookie?.jobTitle : "Test Developer"}
           />
         </FormControl>
 
